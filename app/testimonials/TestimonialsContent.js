@@ -46,11 +46,15 @@ export default function TestimonialsContent() {
           <div className="grid md:grid-cols-3 gap-8">
             {TEAM.map((m,i)=>(
               <div key={m.name} className={`team-card wow ${i===0?"fadeInLeft":i===1?"bounceIn":"fadeInRight"}`}>
-                <Image src={m.img} alt={m.name} width={300} height={300}
-                  style={{ width:"100%", aspectRatio:"1", objectFit:"cover", borderRadius:"12px 12px 0 0" }}/>
-                <div className="social-overlay">
-                  {["𝕏","f","in"].map(s=><a key={s} href="#" onClick={e=>e.preventDefault()}>{s}</a>)}
+                {/* Image wrapper — overlay hanya menutupi gambar */}
+                <div style={{ position:"relative", overflow:"hidden", borderRadius:"12px 12px 0 0" }}>
+                  <Image src={m.img} alt={m.name} width={300} height={300}
+                    style={{ width:"100%", aspectRatio:"1", objectFit:"cover", display:"block" }}/>
+                  <div className="social-overlay">
+                    {["𝕏","f","in"].map(s=><a key={s} href="#" onClick={e=>e.preventDefault()}>{s}</a>)}
+                  </div>
                 </div>
+                {/* Text section — tidak tersentuh overlay */}
                 <div style={{ padding:"16px", background:"rgba(255,255,255,0.03)", borderRadius:"0 0 12px 12px", border:"1px solid rgba(255,255,255,0.06)", borderTop:"none" }}>
                   <h3>{m.name}</h3>
                   <p style={{ fontSize:"10px", letterSpacing:"0.15em", textTransform:"uppercase", color:"#51ffb6", marginBottom:"8px" }}>{m.role}</p>
