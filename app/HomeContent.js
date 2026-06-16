@@ -62,11 +62,11 @@ export default function HomeContent() {
         <div style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 24px" }}>
           <h2 className="section-title wow bounceIn">Screenshots</h2>
           <div className="virticle-line"/><div className="virticle-dot"/>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
             {[IMGS.screen1, IMGS.screen2, IMGS.screen3, IMGS.screen4].map((src,i)=>(
-              <div key={i} className={`screenshot-card wow flipInY delay-${i+1}`}>
-                <Image src={src} alt={`Screenshot ${i+1}`} width={280} height={220}
-                  style={{ width:"100%", height:"220px", objectFit:"cover" }}/>
+              <div key={i} className={`screenshot-card wow fadeIn delay-${i+1}`}>
+                <Image src={src} alt={`Screenshot ${i+1}`} width={600} height={360}
+                  style={{ width:"100%", height:"260px", objectFit:"cover" }}/>
               </div>
             ))}
           </div>

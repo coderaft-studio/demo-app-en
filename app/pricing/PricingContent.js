@@ -34,57 +34,58 @@ export default function PricingContent() {
             Start free, upgrade anytime. No contracts, no hidden fees. Cancel whenever you want.
           </p>
 
-          <div style={{ display:"flex", gap:"0", alignItems:"stretch", flexWrap:"wrap", justifyContent:"center" }}>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6" style={{ alignItems:"stretch" }}>
             {PLANS.map((plan, i)=>{
               const isFeatured = plan.featured;
               return (
-                <div key={plan.name} className={`wow flipInY delay-${i+1}`}
+                <div key={plan.name} className={`wow fadeIn delay-${i+1}`}
                   style={{
-                    flex:"1", minWidth:"280px", maxWidth:"360px", position:"relative",
-                    background: isFeatured ? "linear-gradient(160deg,rgba(81,255,182,0.12),rgba(87,160,255,0.12))" : "rgba(255,255,255,0.03)",
-                    border: isFeatured ? "1px solid rgba(81,255,182,0.5)" : "1px solid rgba(255,255,255,0.08)",
-                    borderRadius: i===0?"16px 0 0 16px" : i===2?"0 16px 16px 0" : "0",
-                    padding:"40px 32px 36px",
+                    position:"relative",
+                    background: isFeatured ? "linear-gradient(160deg,rgba(81,255,182,0.1),rgba(87,160,255,0.08))" : "rgba(255,255,255,0.03)",
+                    border: isFeatured ? "1px solid rgba(81,255,182,0.45)" : "1px solid rgba(255,255,255,0.08)",
+                    borderRadius:"20px",
+                    padding: isFeatured ? "48px 28px 36px" : "32px 28px",
                     display:"flex", flexDirection:"column",
-                    transform: isFeatured ? "scaleY(1.04)" : "none",
-                    zIndex: isFeatured ? 2 : 1,
-                    boxShadow: isFeatured ? "0 0 60px rgba(81,255,182,0.12)" : "none",
+                    boxShadow: isFeatured ? "0 0 48px rgba(81,255,182,0.1), inset 0 1px 0 rgba(81,255,182,0.15)" : "none",
                   }}>
                   {isFeatured && (
-                    <div style={{ position:"absolute", top:"-16px", left:"50%", transform:"translateX(-50%)", background:"linear-gradient(90deg,#51ffb6,#57a0ff)", color:"#1a1a2e", fontSize:"10px", fontWeight:800, letterSpacing:"0.15em", textTransform:"uppercase", padding:"6px 20px", borderRadius:"20px", whiteSpace:"nowrap", boxShadow:"0 4px 20px rgba(81,255,182,0.4)" }}>
+                    <div style={{ position:"absolute", top:"-14px", left:"50%", transform:"translateX(-50%)", background:"linear-gradient(90deg,#51ffb6,#57a0ff)", color:"#1a1a2e", fontSize:"9px", fontWeight:800, letterSpacing:"0.2em", textTransform:"uppercase", padding:"5px 18px", borderRadius:"20px", whiteSpace:"nowrap", boxShadow:"0 4px 16px rgba(81,255,182,0.35)" }}>
                       ⭐ Best Choice
                     </div>
                   )}
-                  <div style={{ marginBottom:"24px", paddingBottom:"24px", borderBottom:"1px solid rgba(255,255,255,0.07)" }}>
-                    <p style={{ fontSize:"10px", fontWeight:700, letterSpacing:"0.25em", textTransform:"uppercase", marginBottom:"16px", color: isFeatured ? GOLD : "rgba(255,255,255,0.4)" }}>{plan.name}</p>
+                  {/* Header */}
+                  <div style={{ marginBottom:"20px", paddingBottom:"20px", borderBottom:"1px solid rgba(255,255,255,0.07)" }}>
+                    <p style={{ fontSize:"9px", fontWeight:800, letterSpacing:"0.3em", textTransform:"uppercase", marginBottom:"14px", color: isFeatured ? GOLD : "rgba(255,255,255,0.35)" }}>{plan.name}</p>
                     {plan.price === "Free" ? (
-                      <div style={{ display:"flex", alignItems:"baseline", gap:"6px" }}>
-                        <span style={{ fontSize:"52px", fontWeight:100, color:"#fff", lineHeight:1 }}>Free</span>
-                        <span style={{ fontSize:"13px", color:"rgba(255,255,255,0.4)" }}>forever</span>
+                      <div style={{ display:"flex", alignItems:"baseline", gap:"8px" }}>
+                        <span style={{ fontSize:"48px", fontWeight:100, color:"#fff", lineHeight:1 }}>Free</span>
+                        <span style={{ fontSize:"12px", color:"rgba(255,255,255,0.35)" }}>forever</span>
                       </div>
                     ) : (
                       <div style={{ display:"flex", alignItems:"flex-start", gap:"2px" }}>
-                        <span style={{ fontSize:"22px", fontWeight:400, color:"rgba(255,255,255,0.6)", marginTop:"8px" }}>$</span>
-                        <span style={{ fontSize:"56px", fontWeight:100, color:"#fff", lineHeight:1 }}>{plan.price.replace("$","")}</span>
-                        <span style={{ fontSize:"13px", color:"rgba(255,255,255,0.4)", marginTop:"12px", marginLeft:"4px" }}>.99<br/>/ mo</span>
+                        <span style={{ fontSize:"18px", fontWeight:400, color:"rgba(255,255,255,0.5)", marginTop:"8px" }}>$</span>
+                        <span style={{ fontSize:"52px", fontWeight:100, color:"#fff", lineHeight:1 }}>{plan.price.replace("$","")}</span>
+                        <span style={{ fontSize:"12px", color:"rgba(255,255,255,0.35)", marginTop:"10px", marginLeft:"4px", lineHeight:1.4 }}>.99<br/>/ mo</span>
                       </div>
                     )}
                   </div>
-                  <ul style={{ listStyle:"none", padding:0, margin:"0 0 32px", flex:1, display:"flex", flexDirection:"column", gap:"0" }}>
+                  {/* Features */}
+                  <ul style={{ listStyle:"none", padding:0, margin:"0 0 28px", flex:1, display:"flex", flexDirection:"column" }}>
                     {plan.features.map(feat=>(
-                      <li key={feat} style={{ fontSize:"13px", color: isFeatured ? "rgba(255,255,255,0.85)" : "rgba(255,255,255,0.6)", padding:"10px 0", borderBottom:"1px solid rgba(255,255,255,0.05)", display:"flex", alignItems:"center", gap:"10px" }}>
-                        <span style={{ width:"18px", height:"18px", borderRadius:"50%", flexShrink:0, background: isFeatured ? "linear-gradient(135deg,#51ffb6,#57a0ff)" : "rgba(81,255,182,0.15)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"9px", color: isFeatured ? "#1a1a2e" : GOLD, fontWeight:900 }}>✓</span>
+                      <li key={feat} style={{ fontSize:"13px", color: isFeatured ? "rgba(255,255,255,0.88)" : "rgba(255,255,255,0.6)", padding:"9px 0", borderBottom:"1px solid rgba(255,255,255,0.04)", display:"flex", alignItems:"center", gap:"10px" }}>
+                        <span style={{ width:"16px", height:"16px", borderRadius:"50%", flexShrink:0, background: isFeatured ? "linear-gradient(135deg,#51ffb6,#57a0ff)" : "rgba(81,255,182,0.12)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"8px", color: isFeatured ? "#1a1a2e" : GOLD, fontWeight:900 }}>✓</span>
                         {feat}
                       </li>
                     ))}
                     {plan.missing.map(feat=>(
-                      <li key={feat} style={{ fontSize:"13px", color:"rgba(255,255,255,0.2)", padding:"10px 0", borderBottom:"1px solid rgba(255,255,255,0.04)", display:"flex", alignItems:"center", gap:"10px", textDecoration:"line-through" }}>
-                        <span style={{ width:"18px", height:"18px", borderRadius:"50%", flexShrink:0, background:"rgba(255,255,255,0.05)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"9px", color:"rgba(255,255,255,0.2)", fontWeight:900 }}>✕</span>
+                      <li key={feat} style={{ fontSize:"13px", color:"rgba(255,255,255,0.18)", padding:"9px 0", borderBottom:"1px solid rgba(255,255,255,0.03)", display:"flex", alignItems:"center", gap:"10px", textDecoration:"line-through" }}>
+                        <span style={{ width:"16px", height:"16px", borderRadius:"50%", flexShrink:0, background:"rgba(255,255,255,0.04)", display:"flex", alignItems:"center", justifyContent:"center", fontSize:"8px", color:"rgba(255,255,255,0.18)" }}>✕</span>
                         {feat}
                       </li>
                     ))}
                   </ul>
-                  <a href="#" style={{ display:"block", textAlign:"center", textDecoration:"none", padding:"13px 24px", borderRadius:"50px", fontSize:"10px", fontWeight:700, letterSpacing:"0.2em", textTransform:"uppercase", transition:"all .3s", background: isFeatured ? "linear-gradient(90deg,#51ffb6,#57a0ff)" : "transparent", color: isFeatured ? "#1a1a2e" : "rgba(255,255,255,0.7)", border: isFeatured ? "none" : "1px solid rgba(255,255,255,0.2)", boxShadow: isFeatured ? "0 4px 20px rgba(81,255,182,0.3)" : "none" }}>
+                  {/* CTA */}
+                  <a href="#" style={{ display:"block", textAlign:"center", textDecoration:"none", padding:"14px 24px", borderRadius:"50px", fontSize:"10px", fontWeight:700, letterSpacing:"0.18em", textTransform:"uppercase", transition:"all .3s", background: isFeatured ? "linear-gradient(90deg,#51ffb6,#57a0ff)" : "transparent", color: isFeatured ? "#1a1a2e" : "rgba(255,255,255,0.6)", border: isFeatured ? "none" : "1px solid rgba(255,255,255,0.15)", boxShadow: isFeatured ? "0 6px 24px rgba(81,255,182,0.25)" : "none" }}>
                     {plan.price==="Free" ? "Download Free" : "Get Started"}
                   </a>
                 </div>

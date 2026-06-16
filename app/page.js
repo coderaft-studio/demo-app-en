@@ -18,10 +18,10 @@ export default function Home() {
   return (
     <>
       <Navbar/>
-      <section className="hero-section" style={{ backgroundImage:`url(${IMGS.heroBg})` }}>
+      <section className="hero-section" style={{ backgroundImage:`url(${IMGS.heroBg})`, overflow:"hidden" }}>
         <div className="hero-overlay"/>
-        <div className="hero-content" style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 24px", width:"100%", paddingTop:"80px" }}>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div className="hero-content" style={{ maxWidth:"1200px", margin:"0 auto", padding:"0 24px", width:"100%", paddingTop:"80px", paddingBottom:"20px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-12 items-center">
             <div>
               <h1 className="wow bounceIn"><strong>One App</strong><br/>for Every<br/>Adventure</h1>
               <p className="wow fadeIn delay-2">
@@ -32,7 +32,7 @@ export default function Home() {
                 <a href="#" className="btn-download"><span className="icon">🍎</span><span className="label"><span>Download on</span><span>App Store</span></span></a>
               </div>
             </div>
-            <div style={{ textAlign:"center" }} className="wow flipInY delay-2">
+            <div style={{ textAlign:"center", overflow:"hidden" }} className="wow fadeIn delay-2 hidden md:block">
               <img src={IMGS.featureMain} alt="Voyaje App"
                 style={{ width:"100%", maxWidth:"420px", height:"auto", borderRadius:"16px", objectFit:"cover" }}/>
             </div>

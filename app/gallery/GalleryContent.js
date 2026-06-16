@@ -28,16 +28,16 @@ export default function GalleryContent() {
           <p style={{ textAlign:"center", color:"#666", maxWidth:"520px", margin:"0 auto 48px", lineHeight:1.8 }} className="wow fadeIn">
             A glimpse into the Voyaje experience — intuitive, beautiful, and designed for real travellers.
           </p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-5">
             {SCREENS.map((s,i)=>(
-              <div key={i} className={`screenshot-card wow flipInY delay-${(i%4)+1}`}
+              <div key={i} className={`screenshot-card wow fadeInLeft delay-${(i%4)+1}`}
                 onClick={()=>setActive(active===i?null:i)}
                 style={{ cursor:"pointer", borderRadius:"12px", overflow:"hidden", border:active===i?"2px solid #51ffb6":"2px solid transparent", transition:"all .3s" }}>
-                <Image src={s.src} alt={s.label} width={280} height={220}
-                  style={{ width:"100%", height:"220px", objectFit:"cover" }}/>
-                <div style={{ padding:"16px", background:active===i?"#1a1a2e":"#fff", transition:"background .3s" }}>
-                  <h3 style={{ fontSize:"13px", fontWeight:700, marginBottom:"6px", color:active===i?"#51ffb6":"#333", letterSpacing:"0.05em" }}>{s.label}</h3>
-                  <p style={{ fontSize:"12px", color:active===i?"rgba(255,255,255,0.55)":"#666", lineHeight:1.5, margin:0 }}>{s.desc}</p>
+                <Image src={s.src} alt={s.label} width={800} height={400}
+                  style={{ width:"100%", height:"260px", objectFit:"cover", display:"block" }}/>
+                <div style={{ padding:"16px 20px", background:active===i?"#1a1a2e":"#fff", transition:"background .3s" }}>
+                  <h3 style={{ fontSize:"15px", fontWeight:700, marginBottom:"8px", color:active===i?"#51ffb6":"#333", letterSpacing:"0.05em" }}>{s.label}</h3>
+                  <p style={{ fontSize:"13px", color:active===i?"rgba(255,255,255,0.55)":"#666", lineHeight:1.6, margin:0 }}>{s.desc}</p>
                 </div>
               </div>
             ))}

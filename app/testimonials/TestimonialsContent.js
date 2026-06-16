@@ -49,7 +49,7 @@ export default function TestimonialsContent() {
                 {/* Image wrapper — overlay hanya menutupi gambar */}
                 <div style={{ position:"relative", overflow:"hidden", borderRadius:"12px 12px 0 0" }}>
                   <Image src={m.img} alt={m.name} width={300} height={300}
-                    style={{ width:"100%", aspectRatio:"1", objectFit:"cover", display:"block" }}/>
+                    style={{ width:"100%", height:"260px", objectFit:"cover", display:"block" }}/>
                   <div className="social-overlay">
                     {["𝕏","f","in"].map(s=><a key={s} href="#" onClick={e=>e.preventDefault()}>{s}</a>)}
                   </div>
